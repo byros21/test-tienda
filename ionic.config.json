@@ -1,0 +1,7 @@
+{
+  "name": "test-tienda",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
