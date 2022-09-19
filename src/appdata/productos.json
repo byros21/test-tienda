@@ -1,0 +1,66 @@
+[
+    {
+        "pro_id" : 1,
+        "pro_name" : "Fibraplac Melamina",
+        "pro_descr" : "Tablero que posee un recubrimiento decorativo impregnado con resinas melamínicas adheridas. (Solo referente al recubrimiento, no al sustrato)",
+        "pro_image" : "",
+        "pro_price" : "45.30",
+        "pro_category" : 2
+    },
+    {
+        "pro_id" : 2,
+        "pro_name" : "Duraplac Melamina RH",
+        "pro_descr" : "Posee un recubrimiento decorativo impregnado con resinas melamínicas adheridas, (solo referente al recubrimiento, no al sustrato).",
+        "pro_image" : "",
+        "pro_price" : "86.90",
+        "pro_category" : 2
+    },
+    {
+        "pro_id" : 3,
+        "pro_name" : "Tablero Alto Brillo",
+        "pro_descr" : "Un efecto espejoque permite un acabado cristalino. Fabricado en base a la última tecnología de lacados superficiales.",
+        "pro_image" : "",
+        "pro_price" : "28.70",
+        "pro_category" : 2
+    },
+    {
+        "pro_id" : 4,
+        "pro_name" : "MDF Pintado",
+        "pro_descr" : "Producto de superficie uniforme, suave y homogénea. Estable y homogéneo en sus dimensiones. Color claro. Flexible.",
+        "pro_image" : "",
+        "pro_price" : "31.85",
+        "pro_category" : 2
+    },
+    {
+        "pro_id" : 5,
+        "pro_name" : "Fibraplac Melamina",
+        "pro_descr" : "Tablero que posee un recubrimiento decorativo impregnado con resinas melamínicas adheridas. (Solo referente al recubrimiento, no al sustrato)",
+        "pro_image" : "",
+        "pro_price" : "45.30",
+        "pro_category" : 2
+    },
+    {
+        "pro_id" : 6,
+        "pro_name" : "Duraplac Melamina RH",
+        "pro_descr" : "Posee un recubrimiento decorativo impregnado con resinas melamínicas adheridas, (solo referente al recubrimiento, no al sustrato).",
+        "pro_image" : "",
+        "pro_price" : "86.90",
+        "pro_category" : 2
+    },
+    {
+        "pro_id" : 7,
+        "pro_name" : "Tablero Alto Brillo",
+        "pro_descr" : "Un efecto espejoque permite un acabado cristalino. Fabricado en base a la última tecnología de lacados superficiales.",
+        "pro_image" : "",
+        "pro_price" : "28.70",
+        "pro_category" : 2
+    },
+    {
+        "pro_id" : 8,
+        "pro_name" : "MDF Pintado",
+        "pro_descr" : "Producto de superficie uniforme, suave y homogénea. Estable y homogéneo en sus dimensiones. Color claro. Flexible.",
+        "pro_image" : "",
+        "pro_price" : "31.85",
+        "pro_category" : 2
+    }
+]

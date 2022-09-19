@@ -4,6 +4,7 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+import './styles.scss';
 const container = document.getElementById('root');
 const root = createRoot(container!);
 root.render(
