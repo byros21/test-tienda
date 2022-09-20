@@ -11,8 +11,7 @@ import {
 import { ModalOrder } from '../components/ModalOrder';
 import './Tab1.css';
 
-import { cart } from 'ionicons/icons';
-import { addCircle } from 'ionicons/icons';
+import { cart, addCircle, refreshCircle } from 'ionicons/icons';
 import Productos from "../appdata/productos.json";
 import { environment } from '../environments/environment';
 
@@ -20,23 +19,28 @@ const Tab1: React.FC = () => {
 
   let cont = 0;
 
-  const getProducts = () => {
+  const getProducts = async() => {
+    
+    //const url = `${environment.url}/discover/movie?api_key=${environment.apiKey}&language=es&sort_by=popularity.desc&page=${popularesPage}`
+    const url = `https://a226-200-24-149-7.ngrok.io/products`
+    const resp = await fetch(url);
+    
+    const result = await resp.json().then( (data) => {
+      //console.log(data)
+      setProducts(data)
+    } );
+    
 
   }
   //let orderProducts: any = []
   const popularesPage = 1;
 
-  const url = `${environment.url}/discover/movie?api_key=${ environment.apiKey }&language=es&sort_by=popularity.desc&page=${ popularesPage }`
-  console.log(url)
+  //getProducts()
 
-
+  getProducts()
 
   const lista: any[] = [];
 
-  Productos.forEach((item: any) => {
-    const nitem = { ...item, checked: false }
-    lista.push(nitem)
-  });
 
   let orderList: any[] = [];
 
@@ -54,7 +58,7 @@ const Tab1: React.FC = () => {
       item.checked = true
     }
     else {
-      const x = orderproducts.filter((obj) => { return obj.pro_id !== item.pro_id })
+      const x = orderproducts.filter((obj) => { return obj.id !== item.id })
       setProductOrder(x)
       //console.log(x)
       item.checked = false
@@ -85,7 +89,13 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary" >
-          <IonTitle> SHOP E-Store </IonTitle>
+          <IonTitle> SHOP E-Store 
+
+          </IonTitle>
+          <IonButton slot="end" color="light" onClick={() => getProducts()} > 
+            <IonIcon slot="start" icon={refreshCircle} />
+            Refresh
+          </IonButton>
         </IonToolbar>
 
         <IonSearchbar
@@ -104,15 +114,15 @@ const Tab1: React.FC = () => {
             <IonToolbar>
 
               {/* <IonButtons > */}
-                <IonButton slot='start' expand='block' fill='clear' style={{ width: '25%' }}
-                  onClick={() => setShowModal(false)} >
-                  Back
-                </IonButton>
+              <IonButton slot='start' expand='block' fill='clear' style={{ width: '25%' }}
+                onClick={() => setShowModal(false)} >
+                Back
+              </IonButton>
 
-                <IonButton color="success" expand='block' fill="solid"
-                  onClick={() => finishOrder()} >
-                  Purcharse
-                </IonButton>
+              <IonButton color="success" expand='block' fill="solid"
+                onClick={() => finishOrder()} >
+                Purcharse
+              </IonButton>
               {/* </IonButtons> */}
             </IonToolbar>
           </IonFooter>
@@ -125,7 +135,7 @@ const Tab1: React.FC = () => {
               products.map(item => {
 
                 return (
-                  <IonCol class='ion-col' sizeLg='3' sizeMd='4' sizeSm='6' sizeXs='12' key={item.pro_id} >
+                  <IonCol class='ion-col' sizeLg='3' sizeMd='4' sizeSm='6' sizeXs='12' key={item.id} >
                     <IonCard class='ion-card'>
                       <IonCardHeader class='product-header' color="light" >
                         {/* <IonCardSubtitle>Card Subtitle</IonCardSubtitle> */}
