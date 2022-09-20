@@ -55,7 +55,7 @@ export const ModalOrder = ({ data }) => {
           data.map(item => {
 
             return (
-              <IonItem key={item.pro_id} style={{ fontSize: "0.9rem" }}>
+              <IonItem key={item.id} style={{ fontSize: "0.9rem" }}>
 
                 {/* <IonButton fill="clear" color="danger" style={{ marginRight: '10px' }}>
                   <IonIcon icon={trash} />

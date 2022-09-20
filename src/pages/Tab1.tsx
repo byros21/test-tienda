@@ -37,20 +37,27 @@ const Tab1: React.FC = () => {
 
   //getProducts()
 
-  getProducts()
+  //getProducts();
 
   const lista: any[] = [];
-
+  
+  
+  Productos.forEach((item: any) => {
+    const nitem = { ...item, checked: false }
+    lista.push(nitem)
+  });
+  
+  let listaFilter: any[] = lista;
 
   let orderList: any[] = [];
 
   const [products, setProducts] = useState(lista);
+  const [productfilter, setFilter] = useState(listaFilter);
   const [orderproducts, setProductOrder] = useState(orderList);
   const [showModal, setShowModal] = useState(false);
 
 
   const [searchText, setSearchText] = useState('');
-
 
   const handleAdd = (event: any, item: any) => {
     //const prod = {... item, {chech}}
@@ -73,8 +80,22 @@ const Tab1: React.FC = () => {
     //setProduct()
   }
 
+  function findProducts(text:string){
+
+    setSearchText(text)
+    setFilter([])
+
+    setFilter (products.filter(obj => obj.pro_name.toLowerCase().includes(text.toLowerCase())).map(filteredName => (      
+      //console.log(filteredName)
+      //listaFilter = filteredName
+      filteredName
+      //setFilter(productfilter.concat(filteredName))
+
+    )))
+ 
+
+  }
   const handleConfirm = (event: any) => {
-    //console.log(items.length, items)
     setShowModal(true)
     //orderProducts.push(item)
   }
@@ -100,7 +121,7 @@ const Tab1: React.FC = () => {
 
         <IonSearchbar
           value={searchText}
-          onIonChange={(e) => setSearchText(e.detail.value!)}
+          onIonChange={(e) => findProducts(e.detail.value!)}
           showCancelButton="focus"
         ></IonSearchbar>
 
@@ -132,7 +153,7 @@ const Tab1: React.FC = () => {
         <IonGrid>
           <IonRow>
             {
-              products.map(item => {
+              productfilter.map(item => {
 
                 return (
                   <IonCol class='ion-col' sizeLg='3' sizeMd='4' sizeSm='6' sizeXs='12' key={item.id} >
