@@ -4,63 +4,55 @@
         "pro_name" : "Fibraplac Melamina",
         "pro_descr" : "Tablero que posee un recubrimiento decorativo impregnado con resinas melamínicas adheridas. (Solo referente al recubrimiento, no al sustrato)",
         "pro_image" : "",
-        "pro_price" : "45.30",
-        "pro_category" : 2
+        "pro_price" : "45.30"
     },
     {
         "id" : 2,
         "pro_name" : "Duraplac Melamina RH",
         "pro_descr" : "Posee un recubrimiento decorativo impregnado con resinas melamínicas adheridas, (solo referente al recubrimiento, no al sustrato).",
         "pro_image" : "",
-        "pro_price" : "86.90",
-        "pro_category" : 2
+        "pro_price" : "86.90"
     },
     {
         "id" : 3,
         "pro_name" : "Tablero Alto Brillo",
         "pro_descr" : "Un efecto espejoque permite un acabado cristalino. Fabricado en base a la última tecnología de lacados superficiales.",
         "pro_image" : "",
-        "pro_price" : "28.70",
-        "pro_category" : 2
+        "pro_price" : "28.70"
     },
     {
         "id" : 4,
         "pro_name" : "Plancha de aluminio",
         "pro_descr" : "Producto de superficie uniforme, suave y homogénea. Estable y homogéneo en sus dimensiones. Color claro. Flexible.",
         "pro_image" : "",
-        "pro_price" : "15.35",
-        "pro_category" : 2
+        "pro_price" : "15.35"
     },
     {
         "id" : 5,
         "pro_name" : "Triplex importado granito",
         "pro_descr" : "Tablero que posee un recubrimiento decorativo impregnado con resinas melamínicas adheridas. (Solo referente al recubrimiento, no al sustrato)",
         "pro_image" : "",
-        "pro_price" : "34.75",
-        "pro_category" : 2
+        "pro_price" : "34.75"
     },
     {
         "id" : 6,
         "pro_name" : "Duraplac Melamina RH importado",
         "pro_descr" : "Posee un recubrimiento decorativo impregnado con resinas melamínicas adheridas, (solo referente al recubrimiento, no al sustrato).",
         "pro_image" : "",
-        "pro_price" : "42.20",
-        "pro_category" : 2
+        "pro_price" : "42.20"
     },
     {
         "id" : 7,
         "pro_name" : "Alto Brillo modular",
         "pro_descr" : "Un efecto espejoque permite un acabado cristalino. Fabricado en base a la última tecnología de lacados superficiales.",
         "pro_image" : "",
-        "pro_price" : "22.40",
-        "pro_category" : 2
+        "pro_price" : "22.40"
     },
     {
         "id" : 8,
         "pro_name" : "MDF Pintado mate",
         "pro_descr" : "Producto de superficie uniforme, suave y homogénea. Estable y homogéneo en sus dimensiones. Color claro. Flexible.",
         "pro_image" : "",
-        "pro_price" : "34.50",
-        "pro_category" : 2
+        "pro_price" : "34.50"
     }
 ]
