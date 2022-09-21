@@ -39,6 +39,56 @@ const Tab2: React.FC = () => {
     //console.log(product)
   }
 
+  const saveProduct = async () => {
+    //const url = `${environment.url}/discover/movie?api_key=${environment.apiKey}&language=es&sort_by=popularity.desc&page=${popularesPage}`
+    /*const nProd = {
+      "id": 7,
+      "pro_name": "Sillas de mareda importada",
+      "pro_descr": "Articulo para el interiores y exteriores",
+      "pro_image": "url-imagen-sillas",
+      "pro_price": "8.99",
+      "details": []
+    }*/
+
+    const nProd = `{"id":7,"pro_name":"Sillas de mareda importada","pro_descr":"Articulo para el interiores y exteriores","pro_image":"url_imagen_sillas","pro_price":"8.99","details":[]}`
+
+    const myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+
+    const requestOptions = {
+      method: 'POST',
+      mode: 'cors',
+      headers: myHeaders,
+      body: nProd
+    };
+
+    console.log(nProd, JSON.parse(nProd))
+
+    const url = `https://ce2f-200-55-251-174.sa.ngrok.io/products:8080/`
+
+    /*const resp = fetch(url, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));*/
+
+
+    fetch(url, {  // Enter your IP address here
+      method: 'POST',
+      mode: 'cors',
+      body: nProd // body data type must match "Content-Type" header
+    }).then( () => console.log())
+
+    setTimeout(() => {
+      console.log(nProd, ' **');
+    }, 3000);
+
+    /*resp.json().then((data) => {
+
+    });*/
+
+
+  }
+
   return (
     <IonPage>
 
@@ -61,13 +111,13 @@ const Tab2: React.FC = () => {
               </IonInput>
             </IonItem>
             <IonInput placeholder="Price" type='number' step="0.10" value={price} onIonChange={(event) => handleInputPrice(event)}>
-              <IonLabel style={{marginLeft:'10px'}}> $ </IonLabel>
+              <IonLabel style={{ marginLeft: '10px' }}> $ </IonLabel>
             </IonInput>
             <IonTextarea placeholder="Description" value={descr} onIonChange={(event) => handleInputDescr(event)} >
             </IonTextarea>
           </IonCardContent>
           <div style={{ textAlign: 'center' }} >
-            <IonButton color="secondary" onClick={() => finishOrder()} >
+            <IonButton color="secondary" onClick={() => saveProduct()} >
               Save Product
             </IonButton>
           </div>

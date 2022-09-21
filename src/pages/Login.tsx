@@ -55,6 +55,8 @@ const Login: React.FC = () => {
                         </IonItem>
                     </>
 
+                    <IonLabel> {'user: prueba@proconty.com - pass: 123xyz\n'}</IonLabel>
+
                     <IonButton expand='block' fill='clear' 
                   onClick={login} >
                   Login

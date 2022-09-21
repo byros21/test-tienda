@@ -15,41 +15,16 @@ import { cart, addCircle, refreshCircle } from 'ionicons/icons';
 import Productos from "../appdata/productos.json";
 import { environment } from '../environments/environment';
 
+const lista: any[] = [];
+
+const listaFilter: any[] = [];
+//let 
+const orderList: any[] = [];
+
+
 const Tab1: React.FC = () => {
 
-  let cont = 0;
-
-  const getProducts = async() => {
-    
-    //const url = `${environment.url}/discover/movie?api_key=${environment.apiKey}&language=es&sort_by=popularity.desc&page=${popularesPage}`
-    const url = `https://a226-200-24-149-7.ngrok.io/products`
-    const resp = await fetch(url);
-    
-    const result = await resp.json().then( (data) => {
-      //console.log(data)
-      setProducts(data)
-    } );
-    
-
-  }
-  //let orderProducts: any = []
-  const popularesPage = 1;
-
-  //getProducts()
-
-  //getProducts();
-
-  const lista: any[] = [];
-  
-  
-  Productos.forEach((item: any) => {
-    const nitem = { ...item, checked: false }
-    lista.push(nitem)
-  });
-  
-  let listaFilter: any[] = lista;
-
-  let orderList: any[] = [];
+  let flag: boolean = false;
 
   const [products, setProducts] = useState(lista);
   const [productfilter, setFilter] = useState(listaFilter);
@@ -58,6 +33,58 @@ const Tab1: React.FC = () => {
 
 
   const [searchText, setSearchText] = useState('');
+
+  //getProducts()
+  //console.log(products.length, lista.length, flag)
+  //setProducts((any));
+
+  //setFilter(lista);
+
+
+
+  /*const resp = await fetch(url);
+  resp.json().then((data) => {
+
+    console.log(data);
+
+    if (!data) {
+      data = Productos;
+    }
+
+    data.forEach((item: any) => {
+      const nitem = { ...item, checked: false }
+      lista.push(nitem)
+    });
+
+
+    //listaFilter = data
+
+  });*/
+
+  //const url = `${environment.url}/discover/movie?api_key=${environment.apiKey}&language=es&sort_by=popularity.desc&page=${popularesPage}`
+  //if(products.length>0) return
+
+  const getProducts = async () => {
+
+    console.log(flag, '**');
+
+    if (flag) return
+    //const url = `${environment.url}/discover/movie?api_key=${environment.apiKey}&language=es&sort_by=popularity.desc&page=${popularesPage}`
+    const url = `https://a226-200-24-149-7.ngrok.io/products`
+    const resp = await fetch(url);
+
+    const result = resp.json().then((data) => {
+      //if (data.length > 0 || !!data) data = [];
+      //console.log(data)
+      setProducts(data)
+    }).catch(function (error) {
+      // handle error
+      flag = true
+      console.log(flag, error);
+      //setProducts([])
+    });
+
+  }
 
   const handleAdd = (event: any, item: any) => {
     //const prod = {... item, {chech}}
@@ -71,7 +98,7 @@ const Tab1: React.FC = () => {
       item.checked = false
       return
     }
-    setProducts(products)
+    //setProducts(products)
     const nItem = { ...item, pro_quanty: 1 }
     setProductOrder(orderproducts.concat(nItem))
     // console.log(item,'<->', item['checked'] )
@@ -80,19 +107,19 @@ const Tab1: React.FC = () => {
     //setProduct()
   }
 
-  function findProducts(text:string){
+  function findProducts(text: string) {
 
     setSearchText(text)
     setFilter([])
 
-    setFilter (products.filter(obj => obj.pro_name.toLowerCase().includes(text.toLowerCase())).map(filteredName => (      
+    setFilter(products.filter(obj => obj.pro_name.toLowerCase().includes(text.toLowerCase())).map(filteredName => (
       //console.log(filteredName)
       //listaFilter = filteredName
       filteredName
       //setFilter(productfilter.concat(filteredName))
 
     )))
- 
+
 
   }
   const handleConfirm = (event: any) => {
@@ -104,16 +131,30 @@ const Tab1: React.FC = () => {
     console.log('---FINISH**', orderproducts)
   }
 
+  // setTimeout(() => {
+  if (lista.length == 0) {
+    Productos.forEach((item: any) => {
+      const nitem = { ...item, checked: false };
+      lista.push(nitem);
+      listaFilter.push(nitem);
+    });
+    //setTimeout(() => {
+    //console.log(lista);
+    setProducts(lista);
+    setFilter(listaFilter);
+    //}, 500);
+  }
+
+  // }, 2000);
   //const searchText =
   return (
 
     <IonPage>
       <IonHeader>
         <IonToolbar color="primary" >
-          <IonTitle> SHOP E-Store 
-
+          <IonTitle> SHOP E-Store
           </IonTitle>
-          <IonButton slot="end" color="light" onClick={() => getProducts()} > 
+          <IonButton slot="end" color="light" onClick={() => getProducts()} >
             <IonIcon slot="start" icon={refreshCircle} />
             Refresh
           </IonButton>
