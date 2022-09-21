@@ -24,7 +24,29 @@ const Tab1: React.FC = () => {
     
     if(flag === true) return;
 
-    fetch('https://test-tienda-0922.herokuapp.com/products')
+    const myHeaders = new Headers({
+      //'Access-Control-Allow-Origin':'http://localhost:8100',
+      'Content-Type':'application/json'
+    });
+    //myHeaders.append('Content-Type', 'application/json');
+    //myHeaders.append('Access-Control-Allow-Origin', '*');
+    // myHeaders.append('Access-Control-Allow-Origin', 'http://localhost:8100');
+    
+    //const myHeaders = { "Access-Control-Allow-Origin": "*" }
+
+    //const x:RequestMode = "no-cors";
+
+    
+    const requestOptions = {
+      //method: 'GET',
+      //mode: x,
+      //headers: myHeaders
+      //redirect: 'follow'
+    };
+    
+    console.log(requestOptions)
+
+    fetch('https://test-tienda-0922.herokuapp.com/products', requestOptions )
       .then(response => response.json())
       .then(json => {
         const nlist = json.map((data: any) => {

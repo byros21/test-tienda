@@ -64,35 +64,38 @@ const Tab2: React.FC = () => {
 
     setTimeout(() => {
     }, 2000 );*/
-    
-    
+
+
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Accept", "*/*");
-    myHeaders.append("Accept-Encoding", "gzip, deflate, br");
-    myHeaders.append("Connection", "keep-alive");
-    
-    const raw = JSON.stringify({
+    //myHeaders.append("Accept", "*/*");
+    //myHeaders.append("Access-Control-Allow-Origin", "http://localhost:8100");
+
+    const x: RequestMode = "cors";
+
+    const raw = JSON.stringify([{
       "id": 2,
-      "pro_name": "Tablero Alto Brillo", 
-      "pro_descr": "Un efecto espejoque permite un acabado cristalino. Fabricado en base a la última tecnología de lacados superficiales.", 
-      "pro_image": "url_imagen_tablero", 
+      "pro_name": "Tablero Alto Brillo",
+      "pro_descr": "Un efecto espejoque permite un acabado cristalino. Fabricado en base a la última tecnología de lacados superficiales.",
+      "pro_image": "url_imagen_tablero",
       "pro_price": "28.70"
-    });
-    
+    }]);
+
     //console.log(raw)
 
     const requestOptions = {
-      method: 'POST',
+      method: 'PUT',
       headers: myHeaders,
       body: raw,
-      cors: 'cors'
+      //mode: x
       //redirect: 'follow'
     };
 
     fetch("https://test-tienda-0922.herokuapp.com/products", requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
+      .then(response => {
+        response.text()
+        console.log(response)
+      })
       .catch(error => console.log('error', error));
 
 
