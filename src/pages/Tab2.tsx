@@ -113,7 +113,7 @@ const Tab2: React.FC = () => {
       handler()*/
 
 
-    const temp = fetch("http://test-tienda-0922.herokuapp.com/products", requestOptions)
+    const temp = fetch("https://test-tienda-0922.herokuapp.com/products", requestOptions)
       .then((response: any) => {
         //response.text().then( res => {
 

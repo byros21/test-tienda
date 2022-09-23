@@ -46,7 +46,7 @@ const Tab1: React.FC = () => {
     
     console.log(requestOptions)
 
-    fetch('https://test-tienda-0922.herokuapp.com/products', requestOptions )
+    fetch('https://test-tienda-0922.herokuapp.com/products')
       .then(response => response.json())
       .then(json => {
         const nlist = json.map((data: any) => {
