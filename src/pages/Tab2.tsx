@@ -51,7 +51,7 @@ const Tab2: React.FC = () => {
     }*/
     const url = `https://test-tienda-0922.herokuapp.com/products`;
 
-    const nProd = `{"id":3,"pro_name":"Tablero Alto Brillo","pro_descr":"Un efecto espejoque permite un acabado cristalino. Fabricado en base a la última tecnología de lacados superficiales.","pro_image":"url_imagen_tablero","pro_price":"28.70","details":[]}`
+    const nProd = `{"id":2,"pro_name":"Tablero Alto Brillo","pro_descr":"Un efecto espejoque permite un acabado cristalino. Fabricado en base a la última tecnología de lacados superficiales.","pro_image":"url_imagen_tablero","pro_price":"28.70","details":[]}`
 
     /*const xhr = new XMLHttpRequest();
     console.log(xhr.responseText, url)
@@ -66,37 +66,75 @@ const Tab2: React.FC = () => {
     }, 2000 );*/
 
 
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+    let myHeaders = new Headers();
     //myHeaders.append("Accept", "*/*");
-    //myHeaders.append("Access-Control-Allow-Origin", "http://localhost:8100");
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+    // myHeaders.append("Access-Control-Allow-Credentials", "true");
+    myHeaders.append("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    myHeaders.append("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
+    myHeaders.append("Content-Type", "application/json");
+    // myHeaders.append("User-Agent", "PostmanRuntime/7.29.2");
+    // myHeaders.append("Cache-Control", "no-cache, no-store");
+    //myHeaders.append("Server", "heroku-router");
 
     const x: RequestMode = "cors";
 
-    const raw = JSON.stringify([{
-      "id": 2,
+    const raw: any = {
+      "id": 3,
       "pro_name": "Tablero Alto Brillo",
-      "pro_descr": "Un efecto espejoque permite un acabado cristalino. Fabricado en base a la última tecnología de lacados superficiales.",
-      "pro_image": "url_imagen_tablero",
+      "pro_descr": "Un efecto espejoque permite un acabado cristalino",
+      "pro_image": "fake_image",
       "pro_price": "28.70"
-    }]);
+    }//);
 
-    //console.log(raw)
+    console.log(nProd, JSON.stringify(nProd))
 
-    const requestOptions = {
-      method: 'PUT',
+    let requestOptions = {
+      method: 'POST',
       headers: myHeaders,
-      body: raw,
+      mode: 'no-cors' as RequestMode,
+      body: nProd, 
+      redirect: 'follow' as RequestRedirect
       //mode: x
       //redirect: 'follow'
     };
 
-    fetch("https://test-tienda-0922.herokuapp.com/products", requestOptions)
+    /*const handler = () => {
+      const requestOptions = {
+        mode: 'no-cors' as RequestMode,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'cache': 'no-cache' },
+        body: JSON.stringify(raw)
+        };
+        fetch('https://test-tienda-0922.herokuapp.com/products', requestOptions)
+            .then(response => response)
+            .then(data => console.log(data));
+      }
+      handler()*/
+
+
+    const temp = fetch("http://test-tienda-0922.herokuapp.com/products", requestOptions)
+      .then((response: any) => {
+        //response.text().then( res => {
+
+        console.log(response)
+
+        //})
+      })
+      .then(result => console.log('**', result))
+    //.catch(error => console.log('error', error));
+
+    setTimeout(() => {
+
+      //console.log(temp)
+
+    }, 3000);
+    /*await fetch("http://test-tienda-0922.herokuapp.com/products", requestOptions)
       .then(response => {
         response.text()
         console.log(response)
       })
-      .catch(error => console.log('error', error));
+      .catch(error => console.log('error', error));*/
 
 
     /*const requestOptions = {
